@@ -44,7 +44,8 @@ var Header = React.createClass({
     }
   },
   handleClose: function () {
-    if (util.isWindows()) {
+    /** @todo nshiell add in a check for Linux too here */
+    if (util.isWindows() || 1) {
       remote.getCurrentWindow().close();
     } else {
       remote.getCurrentWindow().hide();
@@ -185,7 +186,17 @@ var Header = React.createClass({
       </div>
     );
   },
+  renderCssTweaks: function () {
+      let body = document.getElementsByTagName('body')[0];
+      if (body.className.indexOf('platform-') === -1) {
+          if (body.className) {
+            body.className+= ' ';
+          }
+          body.className+= 'platform-'+util.getOperatingSystemType();
+      }
+  },
   render: function () {
+    this.renderCssTweaks();
     if (this.props.hideLogin) {
       return this.renderBasicHeader();
     } else {

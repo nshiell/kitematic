@@ -32,6 +32,17 @@ module.exports = {
       });
     });
   },
+  getOperatingSystemType: function () {
+      if (this.isWindows()) {
+          return 'win32';
+      }
+
+      if (this.isLinux()) {
+          return 'linux';
+      }
+
+      return 'osx';
+  },
   isWindows: function () {
     return process.platform === 'win32';
   },

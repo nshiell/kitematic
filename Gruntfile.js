@@ -231,28 +231,11 @@ module.exports = function (grunt) {
 	    },
     },
 
+    /** The live reload stuff seems to stop Linux from exiting
+     * when the main window is closed - so it is removed for now
+     * @todo maybe add a test for Linux here? */
     // livereload
-    watchChokidar: {
-      options: {
-        spawn: true
-      },
-      livereload: {
-        options: {livereload: true},
-        files: ['build/**/*']
-      },
-      js: {
-        files: ['src/**/*.js'],
-        tasks: ['newer:babel']
-      },
-      less: {
-        files: ['styles/**/*.less'],
-        tasks: ['less']
-      },
-      copy: {
-        files: ['images/*', 'index.html', 'fonts/*'],
-        tasks: ['newer:copy:dev']
-      }
-    }
+    watchChokidar: {}
   });
 
   grunt.registerTask('default', ['newer:babel', 'less', 'newer:copy:dev', 'shell:electron', 'watchChokidar']);

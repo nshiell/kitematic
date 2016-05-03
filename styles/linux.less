@@ -1,0 +1,49 @@
+@import "variables.less";
+
+// classname added to body tag so this will only affect Linux
+.platform-linux {
+  // Window managers won't draw a shadow around the window,
+  // so lets put a border around it like on MS Windows
+  border: 1px solid @color-divider;
+
+  // Override OSX control buttons so they look OSXy
+  .header {
+      .buttons .button {
+        &.button-close,
+        &.button-minimize,
+        &.button-fullscreen {
+          background-color: #FFFFFF;
+          border-color: @gray-light;
+          opacity: .5;
+          margin-right: 5px;
+          height: 14px;
+          width: 14px;
+          border: 1px solid #D3D3D3;
+          border-radius: 7px;
+          box-shadow: 0px 1px 1px 0px @gray-darkest;
+//box-shadow: 0px 1px 1px 0px rgba(234, 234, 234, 0.5);
+          background-position: 1px 1px;
+        }
+
+        &.button-close {
+          background-image: url('close.png');
+        }
+
+        &.button-minimize {
+          background-image: url('minimize.png');
+        }
+
+        &.button-fullscreen {
+          background-image: url('linux/fullscreen.png');
+        }
+      }
+
+    .buttons:hover .button {
+      &.button-close,
+      &.button-minimize,
+      &.button-fullscreen {
+        opacity: 1;
+      }
+    }
+  }
+}
