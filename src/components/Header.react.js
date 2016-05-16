@@ -189,10 +189,14 @@ var Header = React.createClass({
   renderCssTweaks: function () {
       let body = document.getElementsByTagName('body')[0];
       if (body.className.indexOf('platform-') === -1) {
-          if (body.className) {
-            body.className+= ' ';
-          }
-          body.className+= 'platform-'+util.getOperatingSystemType();
+        if (body.className) {
+          body.className+= ' ';
+        }
+        let osType = util.getOperatingSystemType();
+        body.className+= 'platform-' + osType;
+        if (osType === 'linux') {
+          body.className+= ' platform-variant-' + util.getOperatingSystemVariant();
+        }
       }
   },
   render: function () {

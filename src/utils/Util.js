@@ -33,16 +33,23 @@ module.exports = {
       });
     });
   },
+  getOperatingSystemVariant: function () {
+    if (!this.isLinux()) {
+      return undefined;
+    }
+    /** @todo think of a better way of getting this */
+    return 'unity';
+  },
   getOperatingSystemType: function () {
-      if (this.isWindows()) {
-          return 'win32';
-      }
+    if (this.isWindows()) {
+        return 'win32';
+    }
 
-      if (this.isLinux()) {
-          return 'linux';
-      }
+    if (this.isLinux()) {
+      return 'linux';
+    }
 
-      return 'osx';
+    return 'osx';
   },
   isWindows: function () {
     return process.platform === 'win32';

@@ -6,7 +6,7 @@
   // so lets put a border around it like on MS Windows
   border: 1px solid @color-divider;
 
-  // Override OSX control buttons so they look OSXy
+  // Override OSX control buttons so they look less OSXy
   .header {
       .buttons .button {
         &.button-close,
@@ -37,6 +37,65 @@
           background-image: url('linux/fullscreen.png');
         }
       }
+
+    .buttons:hover .button {
+      &.button-close,
+      &.button-minimize,
+      &.button-fullscreen {
+        opacity: 1;
+      }
+    }
+  }
+
+  // variants
+  &.platform-variant-unity {
+    .header .buttons .button {
+      &.button-close,
+      &.button-minimize,
+      &.button-fullscreen {
+        height: 17px;
+        width: 17px;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-position: 0 0;
+        opacity: 1;
+
+        &:hover, &:active {
+          -webkit-filter: brightness(1);
+        }
+      }
+
+      &.button-close {
+        background-image: url('linux/unity/close.png');
+        &:hover {
+          background-image: url('linux/unity/close-over.png');
+        }
+        &:active {
+          background-image: url('linux/unity/close-down.png');
+        }
+      }
+
+      &.button-minimize {
+        background-image: url('linux/unity/minimize.png');
+        &:hover {
+          background-image: url('linux/unity/minimize-over.png');
+        }
+        &:active {
+          background-image: url('linux/unity/minimize-down.png');
+        }
+      }
+
+      &.button-fullscreen {
+        background-image: url('linux/unity/maximize.png');
+        &:hover {
+          background-image: url('linux/unity/maximize-over.png');
+        }
+        &:active {
+          background-image: url('linux/unity/maximize-down.png');
+        }
+      }
+    }
 
     .buttons:hover .button {
       &.button-close,
